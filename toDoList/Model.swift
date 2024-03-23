@@ -7,29 +7,29 @@
 
 import Foundation
 
-var toDoItems: [[String : Any]] = [["Name": "Дописать песню", "isCompleted": true ],
-                                   ["Name": "Забронировать созвон с Алисой", "isCompleted": false]]
+var toDoItems: [[String : Any]] {
+    set {
+        UserDefaults.standard.set(newValue, forKey: "toDoDataKey")
+        UserDefaults.standard.synchronize()
+    }
+    get {
+        if let array = UserDefaults.standard.array(forKey: "toDoDataKey") as? [[String : Any]] {
+            return array
+        } else {
+            return []
+        }
+    }
+}
 
 func addItem (item: String, isCompleted: Bool = false) {
     toDoItems.append(["Name": item, "isCompleted": isCompleted])
-    saveData()
 }
 
 func deleteItem(at id: Int) {
     toDoItems.remove(at: id)
-    saveData()
 }
 
 func changeState(at id: Int) -> Bool {
     toDoItems[id]["isCompleted"] = !(toDoItems[id]["isCompleted"] as! Bool)
-    saveData()
     return toDoItems[id]["isCompleted"] as! Bool
-}
-
-func saveData() {
-    
-}
-
-func loadData() {
-    
 }

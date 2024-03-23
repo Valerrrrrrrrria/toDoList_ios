@@ -9,10 +9,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    
-    
     @IBAction func pushAddAction(_ sender: Any) {
-        toDoItems.append(["Name": "New Element"])
+        toDoItems.append(["Name": "New Element", "isCompleted": false])
         tableView.reloadData()
     }
     
