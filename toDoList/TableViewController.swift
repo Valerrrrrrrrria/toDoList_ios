@@ -10,8 +10,35 @@ import UIKit
 class TableViewController: UITableViewController {
     
     @IBAction func pushAddAction(_ sender: Any) {
-        toDoItems.append(["Name": "New Element", "isCompleted": false])
-        tableView.reloadData()
+        let alertController = UIAlertController(title: "Create new task", message: "", preferredStyle: .alert)
+        let actionCreate = UIAlertAction(title: "Create", style: .default) { alert in
+            let newItem = alertController.textFields?[0].text
+            
+            if (newItem! != "") { addItem(item: newItem!) }
+            self.tableView.reloadData()
+        }
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionCreate.isEnabled = false
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Call my mom"
+            
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                    {_ in
+                        // Being in this block means that something fired the UITextFieldTextDidChange notification.
+                        
+                        // Access the textField object from alertController.addTextField(configurationHandler:) above and get the character count of its non whitespace characters
+                        let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                        let textIsNotEmpty = textCount > 0
+                        
+                        // If the text contains non whitespace characters, enable the OK Button
+                        actionCreate.isEnabled = textIsNotEmpty
+                })
+        }
+        
+        alertController.addAction(actionCreate)
+        alertController.addAction(actionCancel)
+        present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
