@@ -41,11 +41,18 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="ToDo List" id="SSi-Kf-cu8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="I3F-ew-YQO">
-                            <connections>
-                                <action selector="pushAddAction:" destination="Hhb-uZ-O9p" id="Wbu-4H-SHT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="I3F-ew-YQO">
+                                <connections>
+                                    <action selector="pushAddAction:" destination="Hhb-uZ-O9p" id="Wbu-4H-SHT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="mHA-f9-2Cj">
+                                <connections>
+                                    <action selector="pushEditAction:" destination="Hhb-uZ-O9p" id="DCu-5x-eKT"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

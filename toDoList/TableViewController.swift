@@ -9,6 +9,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBAction func pushEditAction(_ sender: Any) {
+        tableView.isEditing = !tableView.isEditing
+    }
+    
     @IBAction func pushAddAction(_ sender: Any) {
         let alertController = UIAlertController(title: "Create new task", message: "", preferredStyle: .alert)
         let actionCreate = UIAlertAction(title: "Create", style: .default) { alert in
@@ -69,7 +73,6 @@ class TableViewController: UITableViewController {
         // Configure the cell...
         let currentItem = toDoItems[indexPath.row]
         cell.textLabel?.text = currentItem["Name"] as? String
-
         cell.accessoryType = currentItem["isCompleted"] as? Bool == true ? .checkmark : .none
         
         return cell
@@ -99,12 +102,10 @@ class TableViewController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.accessoryType = state == true ? .checkmark : .none
     }
     
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        moveItem(from: fromIndexPath.row, to: to.row)
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.
