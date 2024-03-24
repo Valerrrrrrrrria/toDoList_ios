@@ -26,6 +26,7 @@
 		38CF21212BAD96F900303EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38CF21272BAD98E500303EE0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		38CF21292BAD995000303EE0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		38CF212B2BB0A71D00303EE0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 				38CF21212BAD96F900303EE0 /* Info.plist */,
 				38CF21272BAD98E500303EE0 /* TableViewController.swift */,
 				38CF21292BAD995000303EE0 /* Model.swift */,
+				38CF212B2BB0A71D00303EE0 /* README.md */,
 			);
 			path = toDoList;
 			sourceTree = "<group>";
