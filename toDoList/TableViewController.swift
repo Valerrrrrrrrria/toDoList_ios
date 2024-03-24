@@ -73,7 +73,9 @@ class TableViewController: UITableViewController {
         // Configure the cell...
         let currentItem = toDoItems[indexPath.row]
         cell.textLabel?.text = currentItem["Name"] as? String
-        cell.accessoryType = currentItem["isCompleted"] as? Bool == true ? .checkmark : .none
+//        cell.accessoryType = currentItem["isCompleted"] as? Bool == true ? .checkmark : .none
+        
+        cell.imageView?.image = currentItem["isCompleted"] as? Bool == true ? UIImage(named: "check")?.withTintColor(UIColor.systemBlue) : UIImage(named: "uncheck")?.withTintColor(UIColor.systemBlue)
         
         return cell
     }
@@ -99,7 +101,8 @@ class TableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let state = changeState(at: indexPath.row)
         
-        tableView.cellForRow(at: indexPath)?.accessoryType = state == true ? .checkmark : .none
+//        tableView.cellForRow(at: indexPath)?.accessoryType = state == true ? .checkmark : .none
+        tableView.cellForRow(at: indexPath)?.imageView?.image = state == true ? UIImage(named: "check")?.withTintColor(UIColor.systemBlue) : UIImage(named: "uncheck")?.withTintColor(UIColor.systemBlue)
     }
     
     // Override to support rearranging the table view.
